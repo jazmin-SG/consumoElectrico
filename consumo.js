@@ -76,8 +76,7 @@ function agregarProducto() {
 
     sumaGlobal = sumaGlobal + totalProducto;
 
-    document.getElementById("resultadoDetalle").innerHTML += 
-        " " + nombre + ": " + consumoActivo.toFixed(2) + " kWh<br>";
+    document.getElementById("resultadoDetalle").innerHTML +=  nombre + ": " + consumoActivo.toFixed(2) + " kWh<br>";
 
     document.getElementById("resultadoTotal").innerHTML = 
         "Consumo standby de los productos que no se apagan: " +consumoFantasma.toFixed(2) + " kWh<br>" 
