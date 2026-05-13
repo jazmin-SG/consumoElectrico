@@ -1,6 +1,5 @@
 let sumaGlobal = 0;
 let mayorConsumo = 0;
-let nombreMasGaston = "";
 let nombre = "";
     let watts = 0;
     let standby = 0;
