@@ -80,7 +80,7 @@ function agregarProducto() {
     let totalProducto = consumoActivo + consumoFantasma;
 
     sumaGlobal = sumaGlobal + totalProducto;
-    
+    // solo deje en una variable el consumo fantasma para mostrarlo en el resultado total, ya que el consumo activo se acumula en la variable global y se muestra en cada producto agregado a la tabla
     document.getElementById("resultadoTotal").innerHTML = 
         "Consumo standby de los productos que no se apagan: " +consumoFantasma.toFixed(2) + " kWh<br>" +
         "<strong>consumo total acumulado: " + sumaGlobal.toFixed(2) + " kWh</strong>";
