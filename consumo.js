@@ -80,18 +80,30 @@ function agregarProducto() {
     let totalProducto = consumoActivo + consumoFantasma;
 
     sumaGlobal = sumaGlobal + totalProducto;
-     document.getElementById("resultadoDetalle").innerHTML +=  nombre + ": " + consumoActivo.toFixed(2) + " kWh<br>";
+    //lo quite pq sino no se miraban los resultados en la tabla
+     //document.getElementById("resultadoDetalle").innerHTML +=  nombre + ": " + consumoActivo.toFixed(2) + " kWh<br>";
 
-    document.getElementById("resultadoTotal").innerHTML = 
-        "Consumo standby de los productos que no se apagan: " +consumoFantasma.toFixed(2) + " kWh<br>" 
+    //document.getElementById("resultadoTotal").innerHTML = 
+        //"Consumo standby de los productos que no se apagan: " +consumoFantasma.toFixed(2) + " kWh<br>" 
 
 //TABLA DE LOS PRODUCTOS
-    let tabla = document.getElementById("tablaProductos");
+   let tabla = document.getElementById("tablaPrincipal");
     let nuevaFila = tabla.insertRow();
+
     nuevaFila.insertCell(0).innerHTML = nombre;
     nuevaFila.insertCell(1).innerHTML = watts + " W";
-    nuevaFila.insertCell(2).innerHTML = horas + " h";
-    nuevaFila.insertCell(3).innerHTML = "<strong>" + totalProducto.toFixed(2) + " kWh</strong>";
+    nuevaFila.insertCell(2).innerHTML = standby + " W";
+    nuevaFila.insertCell(3).innerHTML = horas + " h";
+    // Agregamos una quinta celda para el total calculado
+    nuevaFila.insertCell(4).innerHTML = "<strong>" + totalProducto.toFixed(2) + " kWh</strong>";
+    // celda para el botón de eliminar
+    let celdaAccion= nuevaFila.insertCell(5);
+    celdaAccion.innerHTML = '<button onclick="eliminarFila(this)" style="background-color: #b0d3d3; color: black; border: none; cursor: pointer; padding: 5px 10px;">Quitar</button>';
+    document.getElementById("horasUso").value = "";
 }
-   
+//NUEVA FUNCION PARA ELIMINAR LA FILA DE LA TABLA
+   function eliminarFila(boton) {
+    let fila = boton.parentNode.parentNode;
+    fila.parentNode.removeChild(fila);
+   }
 
