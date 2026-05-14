@@ -51,6 +51,13 @@ function agregarProducto() {
     let watts = Number(document.getElementById("watts").value);
     let standby = Number(document.getElementById("standby").value);
     let horas = Number(document.getElementById("horasUso").value);
+
+    //ALERTA SI NO SE LLENAN LOS ESPACIOS DEL FORMULARIO
+    if (opcion === "" || watts === "" || standby === "" || horas === "") {
+        alert("¡Atención! Debe llenar todos los campos antes de enviar el formulario.");
+        return;
+    }
+
     let conectado = document.getElementById("estaConectado").value; 
     let nombre = "";
      if (opcion === "otro") {
@@ -70,14 +77,21 @@ function agregarProducto() {
 
     let consumoActivo = (watts * horas) / 1000;
    
-    
-
     let totalProducto = consumoActivo + consumoFantasma;
 
     sumaGlobal = sumaGlobal + totalProducto;
-
-    document.getElementById("resultadoDetalle").innerHTML +=  nombre + ": " + consumoActivo.toFixed(2) + " kWh<br>";
+     document.getElementById("resultadoDetalle").innerHTML +=  nombre + ": " + consumoActivo.toFixed(2) + " kWh<br>";
 
     document.getElementById("resultadoTotal").innerHTML = 
         "Consumo standby de los productos que no se apagan: " +consumoFantasma.toFixed(2) + " kWh<br>" 
+
+//TABLA DE LOS PRODUCTOS
+    let tabla = document.getElementById("tablaProductos");
+    let nuevaFila = tabla.insertRow();
+    nuevaFila.insertCell(0).innerHTML = nombre;
+    nuevaFila.insertCell(1).innerHTML = watts + " W";
+    nuevaFila.insertCell(2).innerHTML = horas + " h";
+    nuevaFila.insertCell(3).innerHTML = "<strong>" + totalProducto.toFixed(2) + " kWh</strong>";
 }
+   
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Programación I</title>
+</head>
+
+<body>
+    <h3> Consumo Eléctrico</h3>
+    <select id="opcionProducto" onchange="actualizarDatos()">
+        <option value=""> Elige un producto </option>
+        <option value="refrigeradora">Refrigeradora (350W)</option>
+        <option value="televisor">Televisor (100W)</option>
+        <option value="laptop">Laptop (50W)</option>
+        <option value= "lavadora">lavadora (2000W)</option>
+        <option value="microondas">Microondas (1200W)</option>
+        <option value="otro">ingrese otro producto</option>
+    </select>
+    <br><br>
+
+    <div id="otroProducto" style="display:none;">
+        <label>Nombre del producto:</label>
+        <input type="text" id="nombreProducto" placeholder="Ej: Aspiradora">
+        <br><br>
+    </div>
+
+    <label>Watts del producto:</label>
+    <input type="number" id="watts" placeholder=>
+<!-- Alerta en la parte del Standby con explicación de que es el consumo en standby -->
+    <label>Watts en standby:</label>
+    <input type="number" id="standby" placeholder=>
+    <span style="cursor: help; color: blue; font-weight:bold;" title="El Standby es el consumo de energía que tiene un dispositivo cuando está apagado pero sigue conectado a la corriente eléctrica.">ⓘ</span>
+
+    <label>Horas de uso al día:</label>
+    <input type="number" id="horasUso" placeholder=>
+    <br><br>
+    <label> se queda conectado al apagarlo?</label>
+    <select id="estaConectado">
+        <option value="si">Sí</option>
+        <option value="no">No</option>
+    </select>
+    <br><br>
+    <button onclick="agregarProducto()">Agregar aparato</button>
+    <h2>Aparatos registrados</h2>
+<!-- Agregue para mostrar los datos en tabla-->
+    <table border="1" style="width:100%"; border-collapse: collapse; text-align: center;>
+        <thead>
+            <tr style="background-color: #e0e1f0;">
+                <th>Producto</th>
+                <th>Watts</th>
+                <th>Standby (W)</th>
+                <th>Horas de uso al día</th>
+            </tr>
+        </thead>
+        <tbody id="tablaProductos">
+        </tbody>
+    </table>
+
+    <!-- QUITE ESTA PARTE PARA QUE NO SALIERA EL TEXTO-->
+    <!--<div id="resultadoDetalle"></div>-->
+    <div id="resultadoTotal"></div>
+    <script src="consumo.js"></script>
+
+    <!--Boton para pedir el ranking-->
+    <button id="botonRanking" onclick="mostrarRanking()" style="display: none;">Ranking de consumo</button>
+    <div id="contenedorRanking" style="display:none; margin-top: 20px;">
+    <h2>Ranking: Mayor a menor consumo</h2>
+    <table border="1" style="width:100%; border-collapse: collapse; text-align: center;">
+        <thead>
+            <tr style="background-color: #e0e1f0;">
+                <th>Producto</th>
+                <th>Watts</th>
+                <th>Standby (W)</th>
+                <th>Horas de uso al día</th>
+                <th>Consumo total (kWh)</th>
+            </tr>
+        </thead>
+        <tbody id="tablaProductos">
+        </tbody>
+    </div>
+
+</body>
+
+</html>
